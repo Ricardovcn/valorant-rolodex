@@ -6,25 +6,18 @@ class App extends Component{
     super();
 
     this.state = {
-      agents: [
-        {
-          id: '1',
-          name: 'Fade'
-        },
-        {
-          id: '2',
-          name: 'Sova'
-        },
-        {
-          id: '3',
-          name: 'Sage'
-        },
-        {
-          id: '4',
-          name: 'Jett'
-        },
-      ]
+      agents: [],
     };
+  }
+
+  componentDidMount() {
+    fetch('https://valorant-api.com/v1/agents?isPlayableCharacter=true')
+      .then((response) => response.json())
+      .then((json_response) => this.setState(() => {
+        return { agents: json_response['data'] }
+      }, () => {
+        console.log(this.state)
+      }))
   }
 
   render () {
@@ -32,7 +25,7 @@ class App extends Component{
       <div className="App">
         {
           this.state.agents.map((agent) => {
-            return <h1 key={agent.id}>{agent.name}</h1>
+            return <h1 key={agent.uuid}>{agent.displayName}</h1>
           })
         }
       </div>
