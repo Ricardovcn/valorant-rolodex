@@ -1,3 +1,4 @@
+import './search-box.style.css'
 import { Component } from "react";
 
 

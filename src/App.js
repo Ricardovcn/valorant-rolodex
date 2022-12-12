@@ -1,7 +1,7 @@
 import './App.css';
 import { Component } from 'react'
 import CardList from './components/card-list/card-list.component';
-import SearchBox from './components/search-box/search-box.component';
+import NavBar from './components/nav-bar/nav-bar.component';
 
 class App extends Component{
   constructor() {
@@ -38,7 +38,7 @@ class App extends Component{
 
     return (
       <div className="App">
-        <SearchBox className='search-box'placeholder='Search Agent' onChangeHandler={onSearchChange}></SearchBox>
+        <NavBar onChangeHandler={onSearchChange}/>
         <CardList agents={filteredAgents}/>
       </div>
     );
